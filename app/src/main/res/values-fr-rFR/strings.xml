@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PppProjet</string>
+
+    <string name="hello_world">Salut Monde!</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="button_text">Click</string>
+    <string name="msg">Pas erreur</string>
+</resources>
