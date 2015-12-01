@@ -30,7 +30,7 @@ import java.net.URL;
 public class GetBiersServices extends IntentService {
     // TODO: Rename actions, choose action names that describe tasks that this
     // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
-    private static final String ACTION_GET_ALL_BIERS = "org.esiea.daoust_clement.pppproject.action.FOO";
+    private static final String ACTION_GET_ALL_BIERS = "org.esiea.daoust_clement.pppproject.action.GET_ALL_BIERS";
     private static final String TAG ="GetBiersServices";
     public static final String BIERS_UPDATE ="com.octip.cours.INF4042_11.BIERS_UPDATE";
 
@@ -54,21 +54,7 @@ public class GetBiersServices extends IntentService {
             }
         }
     }
-    public JSONArray getBiersFromFile(){
-        try{
-            InputStream is = new FileInputStream(getCacheDir() +"/"+"bieres.json");
-            byte[]buffer = new byte[is.available()];
-            is.read(buffer);
-            is.close();
-            return new JSONArray(new String(buffer, "UTF-8"));
-        }catch(IOException e){
-            e.printStackTrace();
-            return new JSONArray();
-        }catch (JSONException e){
-            e.printStackTrace();
-            return new JSONArray();
-        }
-    }
+
     private void copyInputStreamToFile(InputStream in, File file){
         try{
             OutputStream out = new FileOutputStream(file);

@@ -3,20 +3,34 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.DatePicker;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 import java.util.Date;
@@ -29,11 +43,18 @@ public class MainActivity extends AppCompatActivity {
     private DatePickerDialog dpd = null;
     private AlertDialog.Builder ad = null;
     private AlertDialog alertDialog = null;
-
+    private static final String TAG ="GetBiersServices";
+    private JSONArray json;
     Calendar newCalendar = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        IntentFilter intentFilter = new IntentFilter(BIERS_UPDATE);
+        LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(),intentFilter);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(MainActivity.BIERS_UPDATE));
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final TextView tv_hw =(TextView)findViewById(R.id.tv_hello_world);
@@ -41,15 +62,22 @@ public class MainActivity extends AppCompatActivity {
         getString(R.string.hello_world);
         tv_hw.setText(DateUtils.formatDateTime(getApplicationContext(), (new Date()).getTime(), DateFormat.FULL));
 
+        GetBiersServices.startActionGet_All_Biers(this);
+
+        RecyclerView Rv_bieres = (RecyclerView) findViewById(R.id.rev_biere);
+
+        Rv_bieres.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        json=getBiersFromFile();
+        Rv_bieres.setAdapter( new BiersAdapter(json));
+
         btn_hw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Toast.makeText(getApplicationContext(), getString(R.string.msg), Toast.LENGTH_LONG).show();
-               // dpd.show();
-               // alertDialog.show();
-
-               intentFct();
-
+                // Toast.makeText(getApplicationContext(), getString(R.string.msg), Toast.LENGTH_LONG).show();
+                // dpd.show();
+                // alertDialog.show();
+                //intentFct();
+                //
             }
         });
 
@@ -77,12 +105,12 @@ public class MainActivity extends AppCompatActivity {
         alertDialog = ad.create();
         LayoutInflater inflater = alertDialog.getLayoutInflater();
         View dialoglayout = inflater.inflate(R.layout.dialog_view, frameView);
-        GetBiersServices.startActionGet_All_Biers(this);
 
 
 
 
     }
+
 
 
     void intentFct() {
@@ -110,5 +138,62 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public JSONArray getBiersFromFile(){
+        try{
+            InputStream is = new FileInputStream(getCacheDir() +"/"+"bieres.json");
+            byte[]buffer = new byte[is.available()];
+            is.read(buffer);
+            is.close();
+            return new JSONArray(new String(buffer, "UTF-8"));
+        }catch(IOException e){
+            e.printStackTrace();
+            return new JSONArray();
+        }catch (JSONException e){
+            e.printStackTrace();
+            return new JSONArray();
+        }
+    }
+
+    public static final String BIERS_UPDATE = "com.octip,cours.inf4042_11.BIERS_UPDATE";
+
+    public class BierUpdate extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent){
+            Log.d(TAG, getIntent().getAction());
+
+        }
+    }
+
+
+    private class BiersAdapter extends RecyclerView.Adapter<BiersAdapter.BierHolder> {
+        private JSONArray biers ;
+
+        public BiersAdapter(JSONArray jsonarray) {
+            this.biers=jsonarray;
+
+        }
+
+        @Override
+        public BierHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+            return null;
+        }
+
+        @Override
+        public void onBindViewHolder(BierHolder bierHolder, int i) {
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return 0;
+        }
+
+        class BierHolder extends RecyclerView.ViewHolder{
+            public BierHolder(View itemView) {
+                super(itemView);
+            }
+        }
+
     }
 }
