@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.Uri;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.DatePicker;
@@ -66,9 +66,10 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView Rv_bieres = (RecyclerView) findViewById(R.id.rev_biere);
 
-        Rv_bieres.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        Rv_bieres.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         json=getBiersFromFile();
-        Rv_bieres.setAdapter( new BiersAdapter(json));
+        Rv_bieres.setAdapter(new BiersAdapter(json));
+
 
         btn_hw.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,11 +177,18 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public BierHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-            return null;
+
+          LayoutInflater li=  LayoutInflater.from(getParent());
+
+            View  v =li.inflate(R.layout.rv_bier_element, viewGroup, false);
+
+            return new BierHolder(v);
+
         }
 
         @Override
         public void onBindViewHolder(BierHolder bierHolder, int i) {
+            
 
         }
 
@@ -190,8 +198,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         class BierHolder extends RecyclerView.ViewHolder{
+
+            TextView name;
+
+
             public BierHolder(View itemView) {
                 super(itemView);
+                name = (TextView) itemView.findViewById(R.id.rv_bier_element_name);
+
+
             }
         }
 
