@@ -2,6 +2,7 @@ package org.esiea.daoust_clement.pppproject;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.content.BroadcastReceiver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private DatePickerDialog dpd = null;
     private AlertDialog.Builder ad = null;
     private AlertDialog alertDialog = null;
+
     Calendar newCalendar = Calendar.getInstance();
 
     @Override
@@ -45,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
                // Toast.makeText(getApplicationContext(), getString(R.string.msg), Toast.LENGTH_LONG).show();
                // dpd.show();
                // alertDialog.show();
-               startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=Londre")));
+
+               intentFct();
 
             }
         });
@@ -61,10 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
-
-
         //ALERT
-    ad = new AlertDialog.Builder(this).setTitle("Title").setMessage("Message").setPositiveButton("yes", new DialogInterface.OnClickListener(){
+        ad = new AlertDialog.Builder(this).setTitle("Title").setMessage("Message").setPositiveButton("yes", new DialogInterface.OnClickListener(){
         public void onClick(DialogInterface dialog, int which){Toast.makeText(getApplicationContext(), "yes", Toast.LENGTH_LONG).show();}
     }).setNegativeButton("No",new DialogInterface.OnClickListener(){
         public void onClick(DialogInterface dialog, int which){Toast.makeText(getApplicationContext(), "no", Toast.LENGTH_LONG).show();}
@@ -76,16 +77,17 @@ public class MainActivity extends AppCompatActivity {
         alertDialog = ad.create();
         LayoutInflater inflater = alertDialog.getLayoutInflater();
         View dialoglayout = inflater.inflate(R.layout.dialog_view, frameView);
+        GetBiersServices.startActionGet_All_Biers(this);
+
+
 
 
     }
 
+
     void intentFct() {
-
         Intent intent = new Intent(this, SecondActivity.class);
-
         startActivity(intent);
-
     }
 
     @Override
