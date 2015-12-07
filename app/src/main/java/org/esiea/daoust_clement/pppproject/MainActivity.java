@@ -196,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
                JSONObject jObj= biers.getJSONObject(i);
                jObj.getString(name);
 
+
            }
            catch (JSONException e){
                e.printStackTrace();
