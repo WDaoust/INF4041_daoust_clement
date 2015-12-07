@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(BierHolder bierHolder, int i) {
-            
+
 
         }
 
