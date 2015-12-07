@@ -76,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Toast.makeText(getApplicationContext(), getString(R.string.msg), Toast.LENGTH_LONG).show();
                 // dpd.show();
-                // alertDialog.show();
-                //intentFct();
-                //
+                //alertDialog.show();
+                intentFct();
+
             }
         });
 
