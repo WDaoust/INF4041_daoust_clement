@@ -54,6 +54,7 @@ public class GetBiersServices extends IntentService {
                 handleActionGet_All_Biers();
             }
         }
+
     }
 
     private void copyInputStreamToFile(InputStream in, File file){
@@ -88,8 +89,8 @@ public class GetBiersServices extends IntentService {
             conn.connect();
             if(HttpURLConnection.HTTP_OK == conn.getResponseCode()){
                 copyInputStreamToFile(conn.getInputStream(), new File(getCacheDir(),"bieres.json"));
-                Log.d(TAG, "Bieres jon downloaded !");
-                LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(MainActivity.BIERS_UPDATE));
+                Log.d(TAG,"Bieres jon downloaded !");
+                LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(SecondActivity.BIERS_UPDATE));
             }
 
         } catch (MalformedURLException e) {

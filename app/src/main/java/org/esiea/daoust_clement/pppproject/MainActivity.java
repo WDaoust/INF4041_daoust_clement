@@ -51,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        IntentFilter intentFilter = new IntentFilter(BIERS_UPDATE);
-        LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(), intentFilter);
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -74,9 +71,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Toast.makeText(getApplicationContext(), getString(R.string.msg), Toast.LENGTH_LONG).show();
                 // dpd.show();
-                // alertDialog.show();
+                //alertDialog.show();
                 intentFct();
-                //
+
+
             }
         });
 
@@ -158,17 +156,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static final String BIERS_UPDATE = "com.octip,cours.inf4042_11.BIERS_UPDATE";
-
-    public class BierUpdate extends BroadcastReceiver{
-        @Override
-        public void onReceive(Context context, Intent intent){
-            Log.d(TAG, getIntent().getAction());
-
-        }
-    }
-
-
     private class BiersAdapter extends RecyclerView.Adapter<BiersAdapter.BierHolder> {
         private JSONArray biers ;
 
@@ -194,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
 
            try{
                JSONObject jObj= biers.getJSONObject(i);
-               jObj.getString(name);
+               //jObj.getString(name);
 
 
            }
