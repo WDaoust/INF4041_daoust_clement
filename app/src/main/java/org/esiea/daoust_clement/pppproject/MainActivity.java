@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
 
            try{
                JSONObject jObj= biers.getJSONObject(i);
-               //jObj.getString(name);
+               jObj.getString(name);
 
 
            }
