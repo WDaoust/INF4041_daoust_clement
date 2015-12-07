@@ -66,13 +66,18 @@ public class MainActivity extends AppCompatActivity {
         Rv_bieres.setAdapter(new BiersAdapter(json));
 
 
+        GetBiersServices.startActionGet_All_Biers(this);
+
+        IntentFilter intentFilter = new IntentFilter(BIERS_UPDATE);
+        LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(), intentFilter);
+
         btn_hw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Toast.makeText(getApplicationContext(), getString(R.string.msg), Toast.LENGTH_LONG).show();
                 // dpd.show();
                 //alertDialog.show();
-                intentFct();
+                //intentFct();
 
 
             }
@@ -140,6 +145,21 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    public static final String BIERS_UPDATE = "com.octip.inf4042_11.BIERS_UPDATE";
+
+    public class BierUpdate extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d(TAG, getIntent().getAction());
+            // Mettre une notification ici
+        }
+    }
+
+
+
     public JSONArray getBiersFromFile(){
         try{
             InputStream is = new FileInputStream(getCacheDir() +"/"+"bieres.json");

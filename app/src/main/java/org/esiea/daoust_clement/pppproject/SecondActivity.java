@@ -28,10 +28,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        GetBiersServices.startActionGet_All_Biers(this);
 
-        IntentFilter intentFilter = new IntentFilter(BIERS_UPDATE);
-        LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(), intentFilter);
 
     }
 
@@ -57,14 +54,4 @@ public class SecondActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static final String BIERS_UPDATE = "com.octip.inf4042_11.BIERS_UPDATE";
-
-    public class BierUpdate extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Log.d(TAG, getIntent().getAction());
-            // Mettre une notification ici
-        }
-    }
 }

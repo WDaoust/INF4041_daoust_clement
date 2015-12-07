@@ -88,9 +88,11 @@ public class GetBiersServices extends IntentService {
             conn.setRequestMethod("GET");
             conn.connect();
             if(HttpURLConnection.HTTP_OK == conn.getResponseCode()){
-                copyInputStreamToFile(conn.getInputStream(), new File(getCacheDir(),"bieres.json"));
+                copyInputStreamToFile(conn.getInputStream(), new File(getCacheDir(), "bieres.json"));
+
                 Log.d(TAG,"Bieres jon downloaded !");
-                LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(SecondActivity.BIERS_UPDATE));
+                LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(MainActivity.BIERS_UPDATE));
+
             }
 
         } catch (MalformedURLException e) {
