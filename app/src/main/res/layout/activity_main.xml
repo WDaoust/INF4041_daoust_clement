@@ -17,9 +17,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_hello_world"
         android:gravity="center"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="50dp" />
+        android:textSize="50dp"
+        android:layout_below="@+id/my_toolbar"
+        android:layout_alignRight="@+id/my_toolbar"
+        android:layout_alignEnd="@+id/my_toolbar"
+        android:layout_marginTop="86dp" />
 
     <Button
         android:layout_width="wrap_content"
