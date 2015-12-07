@@ -50,11 +50,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        IntentFilter intentFilter = new IntentFilter(BIERS_UPDATE);
-        LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(),intentFilter);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(MainActivity.BIERS_UPDATE));
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final TextView tv_hw =(TextView)findViewById(R.id.tv_hello_world);
@@ -155,17 +150,6 @@ public class MainActivity extends AppCompatActivity {
             return new JSONArray();
         }
     }
-
-    public static final String BIERS_UPDATE = "com.octip,cours.inf4042_11.BIERS_UPDATE";
-
-    public class BierUpdate extends BroadcastReceiver{
-        @Override
-        public void onReceive(Context context, Intent intent){
-            Log.d(TAG, getIntent().getAction());
-
-        }
-    }
-
 
     private class BiersAdapter extends RecyclerView.Adapter<BiersAdapter.BierHolder> {
         private JSONArray biers ;
