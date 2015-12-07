@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PppProject.iml" filepath="$PROJECT_DIR$/PppProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/INF4041_daoust_clement.iml" filepath="$PROJECT_DIR$/INF4041_daoust_clement.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
