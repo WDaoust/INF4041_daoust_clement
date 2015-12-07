@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.Context;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -87,7 +88,8 @@ public class GetBiersServices extends IntentService {
             conn.connect();
             if(HttpURLConnection.HTTP_OK == conn.getResponseCode()){
                 copyInputStreamToFile(conn.getInputStream(), new File(getCacheDir(),"bieres.json"));
-                Log.d(TAG,"Bieres jon downloaded !");
+                Log.d(TAG, "Bieres jon downloaded !");
+                LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(MainActivity.BIERS_UPDATE));
             }
 
         } catch (MalformedURLException e) {

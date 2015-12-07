@@ -27,6 +27,7 @@ import android.widget.DatePicker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -51,8 +52,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         IntentFilter intentFilter = new IntentFilter(BIERS_UPDATE);
-        LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(),intentFilter);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(MainActivity.BIERS_UPDATE));
+        LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(), intentFilter);
 
 
         super.onCreate(savedInstanceState);
@@ -63,9 +63,7 @@ public class MainActivity extends AppCompatActivity {
         tv_hw.setText(DateUtils.formatDateTime(getApplicationContext(), (new Date()).getTime(), DateFormat.FULL));
 
         GetBiersServices.startActionGet_All_Biers(this);
-
         RecyclerView Rv_bieres = (RecyclerView) findViewById(R.id.rev_biere);
-
         Rv_bieres.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         json=getBiersFromFile();
         Rv_bieres.setAdapter(new BiersAdapter(json));
@@ -94,11 +92,15 @@ public class MainActivity extends AppCompatActivity {
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
         //ALERT
-        ad = new AlertDialog.Builder(this).setTitle("Title").setMessage("Message").setPositiveButton("yes", new DialogInterface.OnClickListener(){
-        public void onClick(DialogInterface dialog, int which){Toast.makeText(getApplicationContext(), "yes", Toast.LENGTH_LONG).show();}
-    }).setNegativeButton("No",new DialogInterface.OnClickListener(){
-        public void onClick(DialogInterface dialog, int which){Toast.makeText(getApplicationContext(), "no", Toast.LENGTH_LONG).show();}
-    }).setIcon(android.R.drawable.ic_dialog_alert);
+        ad = new AlertDialog.Builder(this).setTitle("Title").setMessage("Message").setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "yes", Toast.LENGTH_LONG).show();
+            }
+        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "no", Toast.LENGTH_LONG).show();
+            }
+        }).setIcon(android.R.drawable.ic_dialog_alert);
 
         final FrameLayout frameView = new FrameLayout(this);
         ad.setView(frameView);
@@ -188,8 +190,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(BierHolder bierHolder, int i) {
-
-
+            //JSONObject jObj= biers.getJSONObject();
+         //   jObj.getString(name);
         }
 
         @Override
