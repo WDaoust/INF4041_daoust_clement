@@ -190,8 +190,16 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(BierHolder bierHolder, int i) {
-            //JSONObject jObj= biers.getJSONObject();
-         //   jObj.getString(name);
+
+
+           try{
+               JSONObject jObj= biers.getJSONObject(i);
+
+
+           }
+           catch (JSONException e){
+               e.printStackTrace();
+           }
         }
 
         @Override
