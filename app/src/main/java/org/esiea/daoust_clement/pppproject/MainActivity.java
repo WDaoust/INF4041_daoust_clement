@@ -199,6 +199,9 @@ public class MainActivity extends AppCompatActivity {
         client.disconnect();
     }
 
+
+
+
     public class BierUpdate extends BroadcastReceiver {
 
         @Override
@@ -209,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public JSONArray getBiersFromFile() {
+    public JSONArray getBiersFromFile() {//enregistre un jsonarray avec le contenu du lien
         try {
             InputStream is = new FileInputStream(getCacheDir() + "/" + "bieres.json");
             byte[] buffer = new byte[is.available()];
@@ -246,21 +249,15 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(BierHolder bierHolder, int i) {
 
-
-<<<<<<< HEAD
-           try{
-               JSONObject jObj= biers.getJSONObject(i);
-               jObj.getString(name);
-=======
-            try {
-                JSONObject jObj = biers.getJSONObject(i);
-                //jObj.getString(name);
->>>>>>> 77c59c3c0e02a3f91337ab79d8ecc4ad9000c7d3
-
+            try{
+                JSONObject jObj= biers.getJSONObject(i);
+                String jS= jObj.getString("name");
+                bierHolder.name.setText(jS);
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
         }
 
         @Override
@@ -276,6 +273,7 @@ public class MainActivity extends AppCompatActivity {
             public BierHolder(View itemView) {
                 super(itemView);
                 name = (TextView) itemView.findViewById(R.id.rv_bier_element_name);
+
 
 
             }
