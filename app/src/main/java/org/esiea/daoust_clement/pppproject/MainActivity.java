@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "GetBiersServices";
     private JSONArray json;
     Calendar newCalendar = Calendar.getInstance();
+    private RecyclerView rev_bieres=null;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -60,20 +61,20 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-        super.onCreate(savedInstanceState);
+         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         final TextView tv_hw = (TextView) findViewById(R.id.tv_hello_world);
         TextView btn_hw = (TextView) findViewById(R.id.btn_hello_world);
         getString(R.string.hello_world);
         tv_hw.setText(DateUtils.formatDateTime(getApplicationContext(), (new Date()).getTime(), DateFormat.FULL));
 
         GetBiersServices.startActionGet_All_Biers(this);
-        RecyclerView Rv_bieres = (RecyclerView) findViewById(R.id.rev_biere);
-        Rv_bieres.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        rev_bieres = (RecyclerView) findViewById(R.id.rev_biere);
+        rev_bieres.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         json = getBiersFromFile();
-        Rv_bieres.setAdapter(new BiersAdapter(json));
+        rev_bieres.setAdapter(new BiersAdapter(json));
 
 
         GetBiersServices.startActionGet_All_Biers(this);
@@ -208,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             Log.d(TAG, getIntent().getAction());
             // Mettre une notification ici
+            rev_bieres.setAdapter(new BiersAdapter(getBiersFromFile()));
         }
     }
 
@@ -238,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public BierHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
 
-            LayoutInflater li = LayoutInflater.from(getParent());
+            LayoutInflater li = LayoutInflater.from(viewGroup.getContext());
 
             View v = li.inflate(R.layout.rv_bier_element, viewGroup, false);
 
@@ -262,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return 0;
+            return biers.length();
         }
 
         class BierHolder extends RecyclerView.ViewHolder {
