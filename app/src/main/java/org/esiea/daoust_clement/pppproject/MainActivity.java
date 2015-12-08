@@ -1,10 +1,8 @@
 package org.esiea.daoust_clement.pppproject;
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.app.DatePickerDialog.OnDateSetListener;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
@@ -20,38 +18,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.DatePicker;
-
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.Calendar;
-import java.util.Locale;
+
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private DatePickerDialog dpd = null;
-    private AlertDialog.Builder ad = null;
-    private AlertDialog alertDialog = null;
+
     private static final String TAG = "GetBiersServices";
     private JSONArray json;
-    Calendar newCalendar = Calendar.getInstance();
     private RecyclerView rev_bieres=null;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -85,43 +71,13 @@ public class MainActivity extends AppCompatActivity {
         btn_hw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Toast.makeText(getApplicationContext(), getString(R.string.msg), Toast.LENGTH_LONG).show();
-                // dpd.show();
-                //alertDialog.show();
-                //intentFct();
+                intentFct();
 
 
             }
         });
 
-        dpd = new DatePickerDialog(this, new OnDateSetListener() {
 
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
-                Calendar newDate = Calendar.getInstance();
-                newDate.set(year, monthOfYear, dayOfMonth);
-                tv_hw.setText(new SimpleDateFormat("dd-MM-yyyy", Locale.US).format(newDate.getTime()));
-            }
-
-        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
-
-        //ALERT
-        ad = new AlertDialog.Builder(this).setTitle("Title").setMessage("Message").setPositiveButton("yes", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(), "yes", Toast.LENGTH_LONG).show();
-            }
-        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(), "no", Toast.LENGTH_LONG).show();
-            }
-        }).setIcon(android.R.drawable.ic_dialog_alert);
-
-        final FrameLayout frameView = new FrameLayout(this);
-        ad.setView(frameView);
-
-        alertDialog = ad.create();
-        LayoutInflater inflater = alertDialog.getLayoutInflater();
-        View dialoglayout = inflater.inflate(R.layout.dialog_view, frameView);
 
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
