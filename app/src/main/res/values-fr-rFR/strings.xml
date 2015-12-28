@@ -5,5 +5,7 @@
     <string name="hello_world">Salut Monde!</string>
     <string name="action_settings">Paramètres</string>
     <string name="button_text">Click</string>
-    <string name="msg">Pas erreur</string>
+    <string name="msg">Ouverture seconde Acitivité</string>
+    <string name="msg2">Annulation </string>
+    <string name="title_activity_second">Seconde Activité</string>
 </resources>
