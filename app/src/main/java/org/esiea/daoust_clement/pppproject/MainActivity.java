@@ -1,12 +1,15 @@
 package org.esiea.daoust_clement.pppproject;
 
+import android.app.DatePickerDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,7 +21,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -39,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "GetBiersServices";
     private JSONArray json;
     private RecyclerView rev_bieres=null;
+    private DatePickerDialog dpd = null;
+    private AlertDialog.Builder ad = null;
+    private AlertDialog alertDialog = null;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -63,22 +72,34 @@ public class MainActivity extends AppCompatActivity {
         rev_bieres.setAdapter(new BiersAdapter(json));
 
 
-        GetBiersServices.startActionGet_All_Biers(this);
-
         IntentFilter intentFilter = new IntentFilter(BIERS_UPDATE);
         LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(), intentFilter);
 
+        ad = new AlertDialog.Builder(this);
         btn_hw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentFct();
-
+                alertDialog.show();
 
             }
         });
 
 
-
+        ad = new AlertDialog.Builder(this).setTitle("Validation").setMessage("Souahitez-vous valider cette action ?").setPositiveButton("yes", new DialogInterface.OnClickListener(){
+        public void onClick(DialogInterface dialog, int which){
+            Toast.makeText(getApplicationContext(),getString(R.string.msg),Toast.LENGTH_LONG).show();
+            intentFct();
+        }
+            }).setNegativeButton("No",new DialogInterface.OnClickListener(){
+        public void onClick(DialogInterface dialog, int which){
+            Toast.makeText(getApplicationContext(), getString(R.string.msg2), Toast.LENGTH_LONG).show();
+        }
+            }).setIcon(android.R.drawable.ic_dialog_alert);
+        final FrameLayout frameView = new FrameLayout(this);
+                ad.setView(frameView);
+                alertDialog = ad.create();
+                LayoutInflater inflater = alertDialog.getLayoutInflater();
+                View dialoglayout = inflater.inflate(R.layout.dialog_view, frameView);
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
