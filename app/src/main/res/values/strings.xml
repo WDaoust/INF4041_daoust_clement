@@ -1,10 +1,12 @@
 <resources>
-    <string name="app_name">PppProject</string>
+    <string name="app_name">Beer Delivery</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Available Beers!</string>
     <string name="action_settings">Settings</string>
     <string name="button_text">Click</string>
     <string name="msg">Opened Second Activity </string>
     <string name="msg2">Cancellation</string>
-    <string name="title_activity_second">SecondActivity</string>
+    <string name="title_activity_second">Purchasing </string>
+    <string name="next" />
+    <string name="title_activity_sub">SubActivity</string>
 </resources>

@@ -1,30 +1,28 @@
 package org.esiea.daoust_clement.pppproject;
 
-
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class SecondActivity extends AppCompatActivity {
+public class SubActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_sub);
         Toolbar toolbar=(Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_second, menu);
+        getMenuInflater().inflate(R.menu.menu_sub, menu);
         return true;
     }
 
@@ -39,8 +37,10 @@ public class SecondActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if(id==android.R.id.home){
+            NavUtils.navigateUpFromSameTask(this);
+        }
 
         return super.onOptionsItemSelected(item);
     }
-
 }

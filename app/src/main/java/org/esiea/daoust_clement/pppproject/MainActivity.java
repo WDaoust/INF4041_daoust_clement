@@ -14,16 +14,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.BoringLayout;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -39,7 +43,7 @@ import java.util.Date;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
 
     private static final String TAG = "GetBiersServices";
@@ -53,21 +57,35 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolbar=(Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
 
         final TextView tv_hw = (TextView) findViewById(R.id.tv_hello_world);
         TextView btn_hw = (TextView) findViewById(R.id.btn_hello_world);
         getString(R.string.hello_world);
-        tv_hw.setText(DateUtils.formatDateTime(getApplicationContext(), (new Date()).getTime(), DateFormat.FULL));
+        //tv_hw.setText(DateUtils.formatDateTime(getApplicationContext(), (new Date()).getTime(), DateFormat.FULL));
 
         GetBiersServices.startActionGet_All_Biers(this);
 
         rev_bieres = (RecyclerView) findViewById(R.id.rev_biere);
         rev_bieres.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        rev_bieres.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), rev_bieres, new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Toast.makeText(MainActivity.this, "onClick "+position, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+                Toast.makeText(MainActivity.this, "onLongClick "+position, Toast.LENGTH_SHORT).show();
+            }
+        }));
         json = getBiersFromFile();
         rev_bieres.setAdapter(new BiersAdapter(json));
 
@@ -104,6 +122,10 @@ public class MainActivity extends AppCompatActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+
+
+
     }
 
 
@@ -128,7 +150,11 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Toast.makeText(this, ""+item.getTitle(), Toast.LENGTH_SHORT).show();
             return true;
+        }
+        if(id ==R.id.navigate){
+            startActivity(new Intent(this, SubActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
@@ -233,6 +259,7 @@ public class MainActivity extends AppCompatActivity {
                 String jS= jObj.getString("name");
                 bierHolder.name.setText(jS);
 
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -258,5 +285,62 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+
+    }
+    class RecyclerTouchListener implements RecyclerView.OnItemTouchListener{
+
+
+        private GestureDetector gestureDetector;
+        private ClickListener clickListener;
+        public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final ClickListener clickListener){
+            Log.d("VIVZ","constructor invoked");
+            this.clickListener=clickListener;
+            gestureDetector= new GestureDetector(context, new GestureDetector.SimpleOnGestureListener(){
+
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    Log.d("VIVZ","onSimpleTapUp");
+                    return true;
+
+                }
+
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    View child =recyclerView.findChildViewUnder(e.getX(),e.getY());
+                    if(child!=null && clickListener!=null){
+
+                        clickListener.onLongClick(child, recyclerView.getChildPosition(child));
+                    }
+                    Log.d("VIVZ","onLongPress");
+                   // super.onLongPress(e);
+                }
+            });
+
+        }
+        @Override
+        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+            Log.d("VIVZ","onInterceptTouchEvent"+gestureDetector.onTouchEvent(e)+" " +e);
+            View child=rv.findChildViewUnder(e.getX(),e.getY());
+            if (child!=null && clickListener!=null && gestureDetector.onTouchEvent(e)){
+                clickListener.onClick(child, rv.getChildPosition(child));
+            }
+            return false;
+        }
+
+        @Override
+        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+            Log.d("VIVZ","onTouchEvent" +e);
+
+        }
+
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+        }
+    }
+
+    public static interface ClickListener{
+        public void onClick(View view,int position);
+        public void onLongClick(View view, int position);
     }
 }
