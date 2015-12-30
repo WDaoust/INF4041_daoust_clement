@@ -9,5 +9,12 @@
     <string name="msg2">Annulation </string>
     <string name="title_activity_second">Passer commande</string>
     <string name="next" />
+    <string name="title_activity_sub">Secondaire</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Salut page blanche !</string>
+    <string name="drawer_open">ouvrir</string>string>
+    <string name="drawer_close">ferme</string>
+    <string name="button_order">Passer Commande</string>string>
 
 </resources>

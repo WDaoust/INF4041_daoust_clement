@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_appbar);
         toolbar=(Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity  {
 
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        drawerFragment.setUp((DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
+        drawerFragment.setUp(R.id.fragment_navigation_drawer,(DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
 
         final TextView tv_hw = (TextView) findViewById(R.id.tv_hello_world);
         TextView btn_hw = (TextView) findViewById(R.id.btn_hello_world);
@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity  {
         rev_bieres = (RecyclerView) findViewById(R.id.rev_biere);
         rev_bieres.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         rev_bieres.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), rev_bieres, new ClickListener() {
+
+
+
             @Override
             public void onClick(View view, int position) {
                 Toast.makeText(MainActivity.this, "onClick "+position, Toast.LENGTH_SHORT).show();

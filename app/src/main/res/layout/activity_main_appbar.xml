@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/my_toolbar"
+        layout="@layout/app_bar"/>
+
+    <!--<TextView android:text="@string/hello_world"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_hello_world"
+        android:gravity="center"
+        android:textSize="40dp"
+        android:layout_below="@+id/my_toolbar"
+        android:layout_centerHorizontal="true" />-->
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_order"
+        android:textColor="#FFFFFF"
+
+        android:background="@color/colorAccent"
+        android:id="@+id/btn_hello_world"
+        android:textSize="25dp"
+        android:clickable="false"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal" />
+
+
+
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rev_biere"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/btn_hello_world"
+            android:textColor="@color/colorPrimaryText"
+            />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+
+
+        </FrameLayout>
+
+        <fragment
+            android:id="@+id/fragment_navigation_drawer"
+            android:layout_width="@dimen/nav_drawer_width"
+            android:layout_height="match_parent"
+            android:layout_gravity= "start"
+            app:layout="@layout/fragment_navigation_drawer"
+            android:name="org.esiea.daoust_clement.pppproject.NavigationDrawerFragment"
+            tools:layout="@layout/fragment_navigation_drawer">
+
+            </fragment>
+
+
+
+    </android.support.v4.widget.DrawerLayout>
+
+
+</LinearLayout>
