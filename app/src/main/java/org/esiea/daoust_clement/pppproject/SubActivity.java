@@ -1,6 +1,6 @@
 package org.esiea.daoust_clement.pppproject;
 
-import android.support.v4.app.NavUtils;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,10 +13,13 @@ public class SubActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub);
+
         Toolbar toolbar=(Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
     }
 
     @Override
@@ -37,9 +40,7 @@ public class SubActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-        if(id==android.R.id.home){
-            NavUtils.navigateUpFromSameTask(this);
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
