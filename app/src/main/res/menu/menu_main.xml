@@ -13,6 +13,6 @@
         android:id="@+id/navigate"
         android:title="@string/next"
         android:orderInCategory="200"
-        android:icon="@drawable/ic_beer"
+        android:icon="@drawable/ic_beer_white"
         app:showAsAction="always"/>
 </menu>

@@ -10,6 +10,7 @@
 <RelativeLayout
 
     app:theme="@style/AppTheme"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
@@ -22,25 +23,28 @@
         layout="@layout/app_bar"/>
 
 
-    <TextView android:text="@string/hello_world"
+    <!--<TextView android:text="@string/hello_world"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_hello_world"
         android:gravity="center"
         android:textSize="40dp"
         android:layout_below="@+id/my_toolbar"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true" />-->
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_text"
+        android:text="@string/button_order"
+        android:textColor="#FFFFFF"
+
         android:background="@color/colorAccent"
         android:id="@+id/btn_hello_world"
         android:textSize="25dp"
         android:clickable="false"
-        android:layout_below="@+id/tv_hello_world"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@id/my_toolbar"/>
 
 
 

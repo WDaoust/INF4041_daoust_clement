@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_appbar);
+        setContentView(R.layout.activity_main);
         toolbar=(Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity  {
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer,(DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
 
-        final TextView tv_hw = (TextView) findViewById(R.id.tv_hello_world);
+        //final TextView tv_hw = (TextView) findViewById(R.id.tv_hello_world);
         TextView btn_hw = (TextView) findViewById(R.id.btn_hello_world);
         getString(R.string.hello_world);
         //tv_hw.setText(DateUtils.formatDateTime(getApplicationContext(), (new Date()).getTime(), DateFormat.FULL));
