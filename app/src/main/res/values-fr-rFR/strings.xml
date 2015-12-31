@@ -10,6 +10,10 @@
     <string name="title_activity_second">Passer commande</string>
     <string name="next" />
     <string name="title_activity_sub">Secondaire</string>
+    <string name="Reco">Recommandations</string>
+    <string name="Top">Top5</string>
+    <string name="Categories">Catégories</string>
+    <string name="Sug">Proposer une bière</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Salut page blanche !</string>
