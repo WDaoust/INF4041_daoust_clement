@@ -41,13 +41,15 @@
 
         <activity
             android:name=".SubActivity"
-            android:label="@string/title_activity_sub" >
+            android:label="@string/title_activity_sub"
+            android:screenOrientation="portrait">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainActivity"/>
 
         </activity>
         <activity
             android:name=".HelpActivity"
-            android:label="@string/title_help_activity" >
+            android:label="@string/title_help_activity"
+            android:screenOrientation="portrait">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainActivity"/>
 
         </activity>
