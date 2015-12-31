@@ -9,10 +9,13 @@
             layout="@layout/app_bar"/>
 
 
-        <TextView android:text="@string/hello_world"
+        <TextView android:text="@string/empty_sub"
+            android:textSize="30dp"
             android:layout_below="@+id/my_toolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/textView" />
 
     </RelativeLayout>
 

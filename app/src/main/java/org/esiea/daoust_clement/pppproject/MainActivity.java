@@ -88,13 +88,43 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void onClick(View view, int position) {
-                Toast.makeText(MainActivity.this, "onClick "+position, Toast.LENGTH_SHORT).show();
+                if(position==2|| position==3|| position== 5|| position== 7|| position== 11|| position== 13|| position== 17
+                        || position== 19|| position== 23|| position== 29|| position== 31|| position==37|| position== 41
+                        || position== 43|| position== 47|| position== 53|| position== 59|| position== 61|| position== 67
+                        || position== 71|| position== 73|| position== 79|| position== 83|| position== 89|| position==97){
+                    Toast.makeText(MainActivity.this, "n°"+position+ " "+getString(R.string.Unavailable), Toast.LENGTH_SHORT).show();
+                }
+                else {Toast.makeText(MainActivity.this, "n°"+position+ " "+getString(R.string.available), Toast.LENGTH_SHORT).show();}
+
 
             }
 
             @Override
-            public void onLongClick(View view, int position) {
-                Toast.makeText(MainActivity.this, "onLongClick "+position, Toast.LENGTH_SHORT).show();
+            public void onLongClick(View view, final int  position) {
+
+                if(position==2|| position==3|| position== 5|| position== 7|| position== 11|| position== 13|| position== 17
+                        || position== 19|| position== 23|| position== 29|| position== 31|| position==37|| position== 41
+                        || position== 43|| position== 47|| position== 53|| position== 59|| position== 61|| position== 67
+                        || position== 71|| position== 73|| position== 79|| position== 83|| position== 89|| position==97) {
+                    Toast.makeText(MainActivity.this, "n°" + position + " " + getString(R.string.Unavailable), Toast.LENGTH_SHORT).show();
+                }
+                else{new AlertDialog.Builder(MainActivity.this )
+                        .setTitle( "Validation" )
+                        .setMessage( getString(R.string.addMessage) )
+                        .setPositiveButton( "yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(MainActivity.this, "n°" + position + " " + getString(R.string.addedMessage), Toast.LENGTH_SHORT).show();
+
+                            }
+                        })
+                        .setNegativeButton( "No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(MainActivity.this, ""+getString(R.string.msg2), Toast.LENGTH_SHORT).show();
+                            }
+                        } )
+                        .show();
+
+                }
             }
         }));
         json = getBiersFromFile();
@@ -114,7 +144,7 @@ public class MainActivity extends AppCompatActivity  {
         });
 
 
-        ad = new AlertDialog.Builder(this).setTitle("Validation").setMessage("Souahitez-vous valider cette action ?").setPositiveButton("yes", new DialogInterface.OnClickListener(){
+        ad = new AlertDialog.Builder(this).setTitle("Validation").setMessage("Souhaitez-vous valider cette action ?").setPositiveButton("yes", new DialogInterface.OnClickListener(){
         public void onClick(DialogInterface dialog, int which){
             Toast.makeText(getApplicationContext(),getString(R.string.msg),Toast.LENGTH_LONG).show();
             intentFct();
@@ -307,13 +337,13 @@ public class MainActivity extends AppCompatActivity  {
         private GestureDetector gestureDetector;
         private ClickListener clickListener;
         public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final ClickListener clickListener){
-            Log.d("VIVZ","constructor invoked");
+            Log.d("BLA","constructor invoked");
             this.clickListener=clickListener;
             gestureDetector= new GestureDetector(context, new GestureDetector.SimpleOnGestureListener(){
 
                 @Override
                 public boolean onSingleTapUp(MotionEvent e) {
-                    Log.d("VIVZ","onSimpleTapUp");
+                    Log.d("BLA","onSimpleTapUp");
                     return true;
 
                 }
@@ -325,7 +355,7 @@ public class MainActivity extends AppCompatActivity  {
 
                         clickListener.onLongClick(child, recyclerView.getChildPosition(child));
                     }
-                    Log.d("VIVZ","onLongPress");
+                    Log.d("BLA","onLongPress");
                    // super.onLongPress(e);
                 }
             });
@@ -333,7 +363,7 @@ public class MainActivity extends AppCompatActivity  {
         }
         @Override
         public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-            Log.d("VIVZ","onInterceptTouchEvent"+gestureDetector.onTouchEvent(e)+" " +e);
+            Log.d("BLA","onInterceptTouchEvent"+gestureDetector.onTouchEvent(e)+" " +e);
             View child=rv.findChildViewUnder(e.getX(),e.getY());
             if (child!=null && clickListener!=null && gestureDetector.onTouchEvent(e)){
                 clickListener.onClick(child, rv.getChildPosition(child));
@@ -343,7 +373,7 @@ public class MainActivity extends AppCompatActivity  {
 
         @Override
         public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-            Log.d("VIVZ","onTouchEvent" +e);
+            Log.d("BLA","onTouchEvent" +e);
 
         }
 

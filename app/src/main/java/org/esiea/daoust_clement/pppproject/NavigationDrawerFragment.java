@@ -63,8 +63,8 @@ public class NavigationDrawerFragment extends Fragment {
 
     public  List<Information> getData(){
         List<Information> data=new ArrayList<>();
-        int[] icons={R.drawable.ic_reco,R.drawable.ic_top5,R.drawable.ic_beer,R.drawable.ic_addbeer};
-        String[] titles={getString(R.string.Reco),getString(R.string.Top),getString(R.string.Categories),getString(R.string.Sug)};
+        int[] icons={R.drawable.ic_reco,R.drawable.ic_top5,R.drawable.ic_label,R.drawable.ic_addbeer,R.drawable.ic_help};
+        String[] titles={getString(R.string.Reco),getString(R.string.Top),getString(R.string.Categories),getString(R.string.Sug),getString(R.string.help)};
         for(int i=0; i<titles.length &&i<icons.length;i++){
 
             Information current = new Information();

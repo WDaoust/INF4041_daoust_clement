@@ -5,15 +5,24 @@
     <string name="hello_world">Bières Disponibles</string>
     <string name="action_settings">Paramètres</string>
     <string name="button_text">Click</string>
-    <string name="msg">Ouverture seconde Acitivité</string>
+    <string name="msg">C\'est l\'heure de payer l\'addition !</string>
     <string name="msg2">Annulation </string>
     <string name="title_activity_second">Passer commande</string>
     <string name="next" />
-    <string name="title_activity_sub">Secondaire</string>
+    <string name="title_activity_sub">Ma chope</string>
+    <string name="empty_sub">Ma chope est vide !</string>
     <string name="Reco">Recommandations</string>
     <string name="Top">Top5</string>
     <string name="Categories">Catégories</string>
     <string name="Sug">Proposer une bière</string>
+    <string name="Unavailable">produit indisponible</string>
+    <string name="available">produit disponible</string>
+    <string name="addedMessage">ajouté à votre chope !</string>
+    <string name="addMessage">Ajouter à votre chope ?</string>
+    <string name="help">Aide</string>
+
+
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Salut page blanche !</string>
