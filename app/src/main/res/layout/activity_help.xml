@@ -107,6 +107,17 @@
         android:gravity="center"
         android:text="@string/helpClickMug"
         android:textSize="13dp" />
+    <TextView
+        android:id="@+id/authors"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpBeerMug"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:text="authors: William Daoust - Vincent Clement"
+        android:textSize="12dp" />
 
 </RelativeLayout>
 
