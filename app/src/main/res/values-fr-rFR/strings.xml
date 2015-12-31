@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Beer Delivery</string>
+    <string name="app_name">Ma chope de Bière</string>
 
-    <string name="hello_world">Bières Disponibles</string>
+    <string name="hello_world">Au nom de la Bière</string>
     <string name="action_settings">Paramètres</string>
     <string name="button_text">Click</string>
     <string name="msg">C\'est l\'heure de payer l\'addition !</string>
@@ -20,6 +20,14 @@
     <string name="addedMessage">ajouté à votre chope !</string>
     <string name="addMessage">Ajouter à votre chope ?</string>
     <string name="help">Aide</string>
+    <string name="helpReco">"Recommendations" affiche les bières tendances </string>
+    <string name="helpTop5">"Top5" affiche les 5 bières les plus appréciées </string>
+    <string name="helpCat">"Categories" affiche les catégories disponibles </string>
+    <string name="HelpSug">"Proposer une bière" vous permet de suggerer une bière</string>
+    <string name="helpClick">Clicker pour afficher la disponibilité</string>
+    <string name="helpLongClick">Clicker plus longtemps pour ajouter à la chope</string>
+    <string name="helpClickMug">Clicker sur la chope pour afficher vos achats</string>
+    <string name="recoText">Voici les 5 bières de la semaine !</string>
 
 
 
@@ -28,6 +36,9 @@
     <string name="hello_blank_fragment">Salut page blanche !</string>
     <string name="drawer_open">ouvrir</string>string>
     <string name="drawer_close">ferme</string>
-    <string name="button_order">Passer Commande</string>string>
+    <string name="button_order">Passer Commande</string>
+    <string name="title_help_activity">Aide</string>
+    <string name="title_top5">Top 5 des Bières </string>
+    <string name="title_reco">Bières du moment </string>
 
 </resources>

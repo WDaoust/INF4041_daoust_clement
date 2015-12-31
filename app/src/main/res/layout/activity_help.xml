@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.esiea.daoust_clement.pppproject.HelpActivity">
+
+    <include
+        android:id="@+id/my_toolbar"
+        layout="@layout/app_bar" />
+
+
+    <TextView
+        android:id="@+id/helpNav"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/my_toolbar"
+        android:gravity="center"
+        android:text="NavigationDrawer :"
+        android:textSize="19dp" />
+
+    <TextView
+        android:id="@+id/helpReco"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpNav"
+        android:gravity="center"
+        android:text="@string/helpReco"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/helpTop"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpReco"
+        android:gravity="center"
+        android:text="@string/helpTop5"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/helpCat"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpTop"
+        android:gravity="center"
+        android:text="@string/helpCat"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/helpProp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpCat"
+        android:gravity="center"
+        android:text="@string/HelpSug"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/helpRecy"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpProp"
+        android:gravity="center"
+        android:text="RecyclerView :"
+        android:textSize="19dp" />
+
+    <TextView
+        android:id="@+id/helpClick"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpRecy"
+        android:gravity="center"
+        android:text="@string/helpClick"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/helpLongClick"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpClick"
+        android:gravity="center"
+        android:text="@string/helpLongClick"
+        android:textSize="13dp" />
+    <TextView
+        android:id="@+id/helpBeerMug"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpLongClick"
+        android:gravity="center"
+        android:text="@string/helpClickMug"
+        android:textSize="13dp" />
+
+</RelativeLayout>
+
+
+
+
+
+

@@ -8,12 +8,30 @@
         <include android:id="@+id/my_toolbar"
             layout="@layout/app_bar"/>
 
+        <ImageView
+            android:id="@+id/listIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_empty"/>
+
+        <TextView android:text="Oops !"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/listIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:id="@+id/oops" />
 
         <TextView android:text="@string/empty_sub"
             android:textSize="30dp"
-            android:layout_below="@+id/my_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/oops"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:gravity="center"
             android:id="@+id/textView" />
 

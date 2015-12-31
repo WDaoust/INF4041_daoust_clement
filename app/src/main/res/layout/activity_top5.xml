@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.esiea.daoust_clement.pppproject.top5Activity">
+
+    <include
+        android:id="@+id/my_toolbar"
+        layout="@layout/app_bar" />
+
+
+    <TextView
+        android:id="@+id/helpNav"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/my_toolbar"
+        android:gravity="center"
+        android:text="Top 5 :"
+        android:textSize="19dp" />
+
+    <TextView
+        android:id="@+id/helpReco"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpNav"
+        android:gravity="center"
+        android:text="Brugse Zot Blonde"
+        android:textSize="13dp" />
+    <TextView
+        android:id="@+id/note1"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpNav"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentRight="true"
+        android:text="10/10"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/helpTop"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpReco"
+        android:gravity="center"
+        android:text="La Corne du Bois des Pendus Triple"
+        android:textSize="13dp" />
+    <TextView
+        android:id="@+id/note2"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/note1"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentRight="true"
+        android:text="10/10"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/helpCat"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpTop"
+        android:gravity="center"
+        android:text="Tongerlo Prior Triple"
+        android:textSize="13dp" />
+    <TextView
+        android:id="@+id/note3"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/note2"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentRight="true"
+        android:text="10/10"
+        android:textSize="13dp" />
+
+    <TextView
+    android:id="@+id/helpProp"
+    android:layout_marginTop="15dp"
+    android:layout_marginLeft="25dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/helpCat"
+    android:gravity="center"
+    android:text="HobGoblin"
+    android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/note4"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/note3"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentRight="true"
+        android:text="10/10"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/helpbla"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/helpProp"
+        android:gravity="center"
+        android:text="Scottish Ale"
+        android:textSize="13dp" />
+    <TextView
+        android:id="@+id/note5"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/note4"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentRight="true"
+        android:text=" 9/10"
+        android:textSize="13dp" />
+
+
+</RelativeLayout>
+
+
+
+
+
+
